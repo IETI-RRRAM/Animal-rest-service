@@ -1,24 +1,24 @@
 package edu.eci.agronomo.model.animal;
 
 public class AnimalDto {
-    private String idFarm;
+    private String idRanch;
     private String name;
     private String type;
     private String gender;
 
-    public AnimalDto(String idFarm, String name, String type, String gender) {
-        this.idFarm = idFarm;
+    public AnimalDto(String idRanch, String name, String type, String gender) {
+        this.idRanch = idRanch;
         this.name = name;
         this.type = type;
         this.gender = gender;
     }
 
-    public String getIdFarm() {
-        return idFarm;
+    public String getIdRanch() {
+        return idRanch;
     }
 
-    public void setIdFarm(String idFarm) {
-        this.idFarm = idFarm;
+    public void setIdRanch(String idRanch) {
+        this.idRanch = idRanch;
     }
 
     public String getName() {
