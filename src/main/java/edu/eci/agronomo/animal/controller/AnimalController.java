@@ -1,6 +1,8 @@
 package edu.eci.agronomo.animal.controller;
 
-import edu.eci.agronomo.animal.model.Animal;
+import edu.eci.agronomo.animal.model.animal.Animal;
+import edu.eci.agronomo.animal.model.animal.AnimalDto;
+import edu.eci.agronomo.animal.service.AnimalService;
 import edu.eci.agronomo.animal.service.AnimalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,33 +38,9 @@ public class AnimalController {
 
     // Create a new animal
     @PostMapping
-    public ResponseEntity<Animal> createAnimal(@RequestBody Animal animal) {
+    public ResponseEntity<Animal> createAnimal(@RequestBody AnimalDto animal) {
         Animal createdAnimal = animalService.save(animal);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);
     }
 
-    // Update an existing animal
-    @PutMapping("/{id}")
-    public ResponseEntity<Animal> updateAnimal(@PathVariable String id, @RequestBody Animal updatedAnimal) {
-        Optional<Animal> animal = animalService.findById(id);
-        if (animal.isPresent()) {
-            updatedAnimal.setId(id);
-            Animal savedAnimal = animalService.save(updatedAnimal);
-            return ResponseEntity.ok(savedAnimal);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    // Delete an animal
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAnimal(@PathVariable String id) {
-        Optional<Animal> animal = animalService.findById(id);
-        if (animal.isPresent()) {
-            animalService.delete(animal.get().getId());
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 }

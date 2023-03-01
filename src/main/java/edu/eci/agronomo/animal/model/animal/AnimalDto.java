@@ -1,35 +1,16 @@
-package edu.eci.agronomo.model.animal;
+package edu.eci.agronomo.animal.model.animal;
 
-public class Animal {
-
-    private String id;
+public class AnimalDto {
     private String idRanch;
     private String name;
     private String type;
     private String gender;
 
-    public Animal(String id, String idRanch, String name, String type, String gender) {
-        this.id = id;
+    public AnimalDto(String idRanch, String name, String type, String gender) {
         this.idRanch = idRanch;
         this.name = name;
         this.type = type;
         this.gender = gender;
-    }
-
-    public Animal(String id, AnimalDto animalDto) {
-        this.id = id;
-        this.idRanch = animalDto.getIdRanch();
-        this.name = animalDto.getName();
-        this.type = animalDto.getType();
-        this.gender = animalDto.getGender();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getIdRanch() {

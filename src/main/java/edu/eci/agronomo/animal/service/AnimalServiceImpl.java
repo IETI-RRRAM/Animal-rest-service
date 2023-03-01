@@ -1,6 +1,7 @@
 package edu.eci.agronomo.animal.service;
 
-import edu.eci.agronomo.animal.model.Animal;
+import edu.eci.agronomo.animal.model.animal.Animal;
+import edu.eci.agronomo.animal.model.animal.AnimalDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,4 +26,12 @@ public class AnimalServiceImpl implements AnimalService {
     public Optional<Animal> findById(String id) {
         return Optional.ofNullable(animals.get(id));
     }
+
+    @Override
+    public Animal save(AnimalDto animal) {
+        String key = String.valueOf(animals.size()+1);
+        animals.put(key, new Animal(key, animal));
+        return animals.get(key);
+    }
+
 }
