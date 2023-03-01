@@ -2,6 +2,7 @@ package edu.eci.agronomo.animal.service;
 
 import edu.eci.agronomo.animal.model.animal.Animal;
 import edu.eci.agronomo.animal.model.animal.AnimalDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,11 +16,11 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public ArrayList<Animal> findAll() {
-        ArrayList<Animal> get_animals = new ArrayList<>();
+        ArrayList<Animal> getAnimals = new ArrayList<>();
         for (Animal a : animals.values()) {
-            get_animals.add(a);
+            getAnimals.add(a);
         }
-        return get_animals;
+        return getAnimals;
     }
 
     @Override
@@ -37,6 +38,12 @@ public class AnimalServiceImpl implements AnimalService {
     @Override
     public void delete(String id) {
         animals.remove(id);
+    }
+
+    @Override
+    public Animal update(String id, AnimalDto animal) {
+        animals.put(id, new Animal(id, animal));
+        return animals.get(id);
     }
 
 }
