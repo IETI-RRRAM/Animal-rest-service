@@ -1,7 +1,13 @@
 package edu.eci.agronomo.animal.service;
 
-import java.util.HashMap;
+import edu.eci.agronomo.animal.model.Animal;
 
-public class AnimalService {
+import java.util.ArrayList;
+import java.util.Optional;
 
+public interface AnimalService {
+
+    public ArrayList<Animal> findAll();
+
+    public Optional<Animal> findById(Long id);
 }
