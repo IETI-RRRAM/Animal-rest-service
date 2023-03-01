@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -44,6 +45,13 @@ public class AnimalRepositoryImpl implements AnimalRepository{
 
     @Override
     public Animal update(String id, AnimalDto animal) {
-        return null;
+        Query query = new Query(Criteria.where("id").is(id));
+        Update update = new Update()
+                .set("idRanch", animal.getIdRanch())
+                .set("name", animal.getName())
+                .set("type", animal.getType())
+                .set("gender", animal.getGender());
+        mongoTemplate.updateFirst(query, update, Animal.class);
+        return findById(id).orElse(null);
     }
 }
