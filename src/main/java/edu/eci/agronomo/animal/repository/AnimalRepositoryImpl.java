@@ -1,45 +1,45 @@
-package edu.eci.agronomo.animal.service;
+package edu.eci.agronomo.animal.repository;
 
 import edu.eci.agronomo.animal.model.animal.Animal;
 import edu.eci.agronomo.animal.model.animal.AnimalDto;
-import edu.eci.agronomo.animal.repository.AnimalRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Optional;
 
-@Service
-public class AnimalServiceImpl implements AnimalService {
+@Repository
+public class AnimalRepositoryImpl implements AnimalRepository{
 
     @Autowired
-    AnimalRepositoryImpl animalRepository;
+    private final MongoTemplate mongoTemplate;
+
+    public AnimalRepositoryImpl(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     @Override
     public ArrayList<Animal> findAll() {
-        return animalRepository.findAll();
+        return null;
     }
 
     @Override
     public Optional<Animal> findById(String id) {
-        return animalRepository.findById(id);
+        return Optional.empty();
     }
 
     @Override
     public Animal save(AnimalDto animal) {
-        return animalRepository.save(animal);
+        return null;
     }
 
     @Override
     public void delete(String id) {
-        animalRepository.delete(id);
+
     }
 
     @Override
     public Animal update(String id, AnimalDto animal) {
-        return animalRepository.update(id, animal);
+        return null;
     }
-
 }
