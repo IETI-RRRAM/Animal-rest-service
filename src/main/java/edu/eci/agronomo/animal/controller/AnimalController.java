@@ -3,16 +3,38 @@ package edu.eci.agronomo.animal.controller;
 import edu.eci.agronomo.animal.model.animal.Animal;
 import edu.eci.agronomo.animal.model.animal.AnimalDto;
 import edu.eci.agronomo.animal.service.AnimalService;
+import edu.eci.agronomo.animal.service.AnimalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
+
     @Autowired
-    private AnimalService animalService;
+    private AnimalServiceImpl animalService;
+
+    // Get all animals
+    @GetMapping
+    public List<Animal> getAllAnimals() {
+        return animalService.findAll();
+    }
+
+    // Get animal by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Animal> getAnimalById(@PathVariable String id) {
+        Optional<Animal> animal = animalService.findById(id);
+        if (animal.isPresent()) {
+            return ResponseEntity.ok(animal.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     // Create a new animal
     @PostMapping
@@ -20,4 +42,5 @@ public class AnimalController {
         Animal createdAnimal = animalService.save(animal);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);
     }
+
 }
