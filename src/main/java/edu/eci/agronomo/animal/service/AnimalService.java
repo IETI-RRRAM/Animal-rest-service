@@ -9,5 +9,5 @@ public interface AnimalService {
 
     public ArrayList<Animal> findAll();
 
-    public Optional<Animal> findById(Long id);
+    public Optional<Animal> findById(String id);
 }

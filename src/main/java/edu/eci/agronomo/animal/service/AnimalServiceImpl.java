@@ -10,10 +10,10 @@ import java.util.Optional;
 @Service
 public class AnimalServiceImpl implements AnimalService {
 
-    private HashMap<Long, Animal> animals = new HashMap<>();
+    private HashMap<String, Animal> animals = new HashMap<>();
 
     public AnimalServiceImpl() {
-        Animal animal1 = new Animal(1, 122, "caramelo", "cow", "hembra");
+        Animal animal1 = new Animal("1", "122", "caramelo", "cow", "hembra");
         animals.put(animal1.getId(), animal1);
     }
 
@@ -27,7 +27,7 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
-    public Optional<Animal> findById(Long id) {
+    public Optional<Animal> findById(String id) {
         return Optional.ofNullable(animals.get(id));
     }
 }

@@ -25,7 +25,7 @@ public class AnimalController {
 
     // Get animal by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Animal> getAnimalById(@PathVariable Long id) {
+    public ResponseEntity<Animal> getAnimalById(@PathVariable String id) {
         Optional<Animal> animal = animalService.findById(id);
         if (animal.isPresent()) {
             return ResponseEntity.ok(animal.get());
@@ -43,7 +43,7 @@ public class AnimalController {
 
     // Update an existing animal
     @PutMapping("/{id}")
-    public ResponseEntity<Animal> updateAnimal(@PathVariable Long id, @RequestBody Animal updatedAnimal) {
+    public ResponseEntity<Animal> updateAnimal(@PathVariable String id, @RequestBody Animal updatedAnimal) {
         Optional<Animal> animal = animalService.findById(id);
         if (animal.isPresent()) {
             updatedAnimal.setId(id);
@@ -56,7 +56,7 @@ public class AnimalController {
 
     // Delete an animal
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAnimal(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteAnimal(@PathVariable String id) {
         Optional<Animal> animal = animalService.findById(id);
         if (animal.isPresent()) {
             animalService.delete(animal.get().getId());
