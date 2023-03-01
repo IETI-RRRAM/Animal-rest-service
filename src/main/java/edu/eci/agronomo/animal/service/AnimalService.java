@@ -13,6 +13,6 @@ public interface AnimalService {
 
     public Animal save(AnimalDto animal);
 
+    public void delete(String id);
     public Animal update(String id, AnimalDto animal);
-
 }

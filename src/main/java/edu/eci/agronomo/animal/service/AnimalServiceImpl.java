@@ -36,6 +36,11 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
+    public void delete(String id) {
+        animals.remove(id);
+    }
+
+    @Override
     public Animal update(String id, AnimalDto animal) {
         animals.put(id, new Animal(id, animal));
         return animals.get(id);

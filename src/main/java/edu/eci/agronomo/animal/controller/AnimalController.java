@@ -43,6 +43,18 @@ public class AnimalController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);
     }
 
+    // Delete an animal
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAnimal(@PathVariable String id) {
+        Optional<Animal> animal = animalService.findById(id);
+        if (animal.isPresent()) {
+            animalService.delete(animal.get().getId());
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     //update a animal
     @PutMapping("/{id}")
     public ResponseEntity<Animal> updateAnimal(@PathVariable String id, @RequestBody AnimalDto updatedAnimal) {
@@ -54,5 +66,4 @@ public class AnimalController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }
