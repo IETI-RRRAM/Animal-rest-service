@@ -3,14 +3,14 @@ package edu.eci.agronomo.animal.model;
 public class Animal {
 
     private long id;
-    private long id_farm;
+    private long idFarm;
     private String name;
     private String type;
     private String gender;
 
     public Animal(long id, long id_farm, String name, String type, String gender) {
         this.id = id;
-        this.id_farm = id_farm;
+        this.idFarm = id_farm;
         this.name = name;
         this.type = type;
         this.gender = gender;
@@ -28,11 +28,11 @@ public class Animal {
     }
 
     public long getId_farm() {
-        return id_farm;
+        return idFarm;
     }
 
     public void setId_farm(long id_farm) {
-        this.id_farm = id_farm;
+        this.idFarm = id_farm;
     }
 
     public String getName() {
