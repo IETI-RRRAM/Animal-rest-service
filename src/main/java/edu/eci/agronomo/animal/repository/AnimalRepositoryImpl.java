@@ -2,6 +2,7 @@ package edu.eci.agronomo.animal.repository;
 
 import edu.eci.agronomo.animal.model.animal.Animal;
 import edu.eci.agronomo.animal.model.animal.AnimalDto;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -35,12 +36,12 @@ public class AnimalRepositoryImpl implements AnimalRepository{
 
     @Override
     public Animal save(AnimalDto animal) {
-        return null;
+        return mongoTemplate.save(new Animal(String.valueOf(ObjectId.get()), animal));
     }
 
     @Override
     public void delete(String id) {
-
+        mongoTemplate.remove(new Query(Criteria.where("id").is(id)), Animal.class);
     }
 
     @Override
