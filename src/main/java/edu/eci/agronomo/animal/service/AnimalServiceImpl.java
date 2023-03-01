@@ -1,7 +1,7 @@
-package edu.eci.agronomo.service;
+package edu.eci.agronomo.animal.service;
 
-import edu.eci.agronomo.model.animal.Animal;
-import edu.eci.agronomo.model.animal.AnimalDto;
+import edu.eci.agronomo.animal.model.animal.Animal;
+import edu.eci.agronomo.animal.model.animal.AnimalDto;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

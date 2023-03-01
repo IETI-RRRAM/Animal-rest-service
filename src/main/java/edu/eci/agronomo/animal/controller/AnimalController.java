@@ -1,8 +1,8 @@
-package edu.eci.agronomo.controller;
+package edu.eci.agronomo.animal.controller;
 
-import edu.eci.agronomo.model.animal.Animal;
-import edu.eci.agronomo.model.animal.AnimalDto;
-import edu.eci.agronomo.service.AnimalService;
+import edu.eci.agronomo.animal.model.animal.Animal;
+import edu.eci.agronomo.animal.model.animal.AnimalDto;
+import edu.eci.agronomo.animal.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
