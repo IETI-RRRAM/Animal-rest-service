@@ -1,4 +1,4 @@
-package edu.eci.agronomo.animal;
+package edu.eci.agronomo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
