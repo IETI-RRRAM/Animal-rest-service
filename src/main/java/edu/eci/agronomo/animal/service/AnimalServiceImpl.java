@@ -34,4 +34,9 @@ public class AnimalServiceImpl implements AnimalService {
         return animals.get(key);
     }
 
+    @Override
+    public void delete(String id) {
+        animals.remove(id);
+    }
+
 }

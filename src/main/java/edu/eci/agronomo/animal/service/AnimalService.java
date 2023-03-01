@@ -14,4 +14,5 @@ public interface AnimalService {
 
     public Animal save(AnimalDto animal);
 
+    public void delete(String id);
 }
