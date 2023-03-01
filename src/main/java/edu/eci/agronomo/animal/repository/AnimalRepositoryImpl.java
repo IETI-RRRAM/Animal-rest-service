@@ -4,6 +4,8 @@ import edu.eci.agronomo.animal.model.animal.Animal;
 import edu.eci.agronomo.animal.model.animal.AnimalDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -20,12 +22,14 @@ public class AnimalRepositoryImpl implements AnimalRepository{
 
     @Override
     public ArrayList<Animal> findAll() {
-        return null;
+        return (ArrayList<Animal>) mongoTemplate.findAll(Animal.class);
     }
 
     @Override
     public Optional<Animal> findById(String id) {
-        return Optional.empty();
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").is(id));
+        return Optional.ofNullable(mongoTemplate.findOne(query, Animal.class));
     }
 
     @Override
