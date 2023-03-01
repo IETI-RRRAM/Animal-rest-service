@@ -1,5 +1,6 @@
 package edu.eci.agronomo.animal.model.animal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,6 +18,13 @@ public class Animal implements Serializable {
 
     public Animal(String id, String idRanch, String name, String type, String gender) {
         this.id = id;
+        this.idRanch = idRanch;
+        this.name = name;
+        this.type = type;
+        this.gender = gender;
+    }
+
+    public Animal(String idRanch, String name, String type, String gender) {
         this.idRanch = idRanch;
         this.name = name;
         this.type = type;
