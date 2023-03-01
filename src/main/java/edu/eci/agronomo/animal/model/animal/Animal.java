@@ -1,7 +1,14 @@
 package edu.eci.agronomo.animal.model.animal;
 
-public class Animal {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
+
+@Document(collection = "animal_collection")
+public class Animal implements Serializable {
+
+    @Id
     private String id;
     private String idRanch;
     private String name;
@@ -22,6 +29,10 @@ public class Animal {
         this.name = animalDto.getName();
         this.type = animalDto.getType();
         this.gender = animalDto.getGender();
+    }
+
+    public Animal() {
+
     }
 
     public String getId() {
