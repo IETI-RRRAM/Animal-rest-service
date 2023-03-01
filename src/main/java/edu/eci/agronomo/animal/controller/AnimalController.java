@@ -43,4 +43,16 @@ public class AnimalController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAnimal);
     }
 
+    //update a animal
+    @PutMapping("/{id}")
+    public ResponseEntity<Animal> updateAnimal(@PathVariable String id, @RequestBody AnimalDto updatedAnimal) {
+        Optional<Animal> animal = animalService.findById(id);
+        if (animal.isPresent()) {
+            Animal savedAnimal = animalService.update(id, updatedAnimal);
+            return ResponseEntity.ok(savedAnimal);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
