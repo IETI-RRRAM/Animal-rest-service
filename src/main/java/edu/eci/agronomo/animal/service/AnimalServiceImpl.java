@@ -12,11 +12,6 @@ public class AnimalServiceImpl implements AnimalService {
 
     private HashMap<String, Animal> animals = new HashMap<>();
 
-    public AnimalServiceImpl() {
-        Animal animal1 = new Animal("1", "122", "caramelo", "cow", "hembra");
-        animals.put(animal1.getId(), animal1);
-    }
-
     @Override
     public ArrayList<Animal> findAll() {
         ArrayList<Animal> get_animals = new ArrayList<>();
