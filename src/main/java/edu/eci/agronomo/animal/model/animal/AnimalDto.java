@@ -13,6 +13,10 @@ public class AnimalDto {
         this.gender = gender;
     }
 
+    public AnimalDto() {
+
+    }
+
     public String getIdRanch() {
         return idRanch;
     }

@@ -5,7 +5,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 public class AnimalNotFoundException extends ResponseStatusException {
 
-    public AnimalNotFoundException(Long id) {
+    public AnimalNotFoundException(String id) {
         super(HttpStatus.NOT_FOUND, "Animal with ID: " + id + " not found");
     }
 }

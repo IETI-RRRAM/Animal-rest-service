@@ -1,5 +1,6 @@
 package edu.eci.agronomo.animal.controller;
 
+import edu.eci.agronomo.animal.exceptions.AnimalNotFoundException;
 import edu.eci.agronomo.animal.model.animal.Animal;
 import edu.eci.agronomo.animal.model.animal.AnimalDto;
 import edu.eci.agronomo.animal.service.AnimalService;
@@ -32,7 +33,7 @@ public class AnimalController {
         if (animal.isPresent()) {
             return ResponseEntity.ok(animal.get());
         } else {
-            return ResponseEntity.notFound().build();
+            throw new AnimalNotFoundException(id);
         }
     }
 
@@ -51,7 +52,7 @@ public class AnimalController {
             animalService.delete(animal.get().getId());
             return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.notFound().build();
+            throw new AnimalNotFoundException(id);
         }
     }
 
@@ -63,7 +64,7 @@ public class AnimalController {
             Animal savedAnimal = animalService.update(id, updatedAnimal);
             return ResponseEntity.ok(savedAnimal);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new AnimalNotFoundException(id);
         }
     }
 }
