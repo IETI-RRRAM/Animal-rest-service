@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
@@ -29,6 +30,8 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 class AnimalApplicationTests {
 
 	final String BASE_URL = "/api/animals";
+
+
 
 	@MockBean
 	private AnimalServiceImpl animalService;
@@ -67,6 +70,24 @@ class AnimalApplicationTests {
 				.andExpect(result -> assertEquals("404 NOT_FOUND \"Animal with ID: " + id + " not found\"", result.getResolvedException().getMessage()));
 
 		verify(animalService, times(1)).findById(id);
+	}
+
+	@Test
+	void testGetAll() throws Exception {
+		ArrayList<Animal> animals = new ArrayList<>();
+		Animal animal = new Animal("117", "caramelo", "cow", "M");
+		Animal animal2 = new Animal("JHGKAIG","117", "caramelo", "cow", "M");
+		animals.add(animal);
+		animals.add(animal2);
+
+		when(animalService.findAll()).thenReturn(animals);
+
+		mockMvc.perform(get(BASE_URL))
+				.andExpect(status().isOk());
+
+		verify(animalService, times(1)).findAll();
+
+
 	}
 
 	//TEST UPDATE 1
@@ -117,4 +138,29 @@ class AnimalApplicationTests {
 		verify(animalService, times(1)).save(any());
 	}
 
+	//TEST DELETE
+	@Test
+	void testDeleteAnimal() throws Exception {
+		Animal animal = new Animal("JHGKAIG","117", "caramelo", "cow", "M");
+
+		when(animalService.findById(any())).thenReturn(Optional.of(animal));
+
+		mockMvc.perform(delete(BASE_URL + "/testid")
+						.contentType(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk());
+
+		verify(animalService, times(1)).delete(any());
+	}
+
+	//TEST DELETE
+	@Test
+	void testDeleteAnimalNotFound() throws Exception {
+		when(animalService.findById(any())).thenReturn(Optional.empty());
+
+		mockMvc.perform(delete(BASE_URL + "/testid")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNotFound());
+
+		verify(animalService, times(1)).findById(any());
+	}
 }
