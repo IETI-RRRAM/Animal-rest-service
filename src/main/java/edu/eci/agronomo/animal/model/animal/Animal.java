@@ -17,9 +17,9 @@ public class Animal implements Serializable {
     private String age;
     private String stage;
     private String weight;
-    private String race;
+    private String breed;
 
-    public Animal(String id, String idRanch, String name, String type, String gender, String age, String stage, String weight, String race) {
+    public Animal(String id, String idRanch, String name, String type, String gender, String age, String stage, String weight, String breed) {
         this.id = id;
         this.idRanch = idRanch;
         this.name = name;
@@ -28,10 +28,10 @@ public class Animal implements Serializable {
         this.age = age;
         this.stage = stage;
         this.weight = weight;
-        this.race = race;
+        this.breed = breed;
     }
 
-    public Animal(String idRanch, String name, String type, String gender, String age, String stage, String weight, String race) {
+    public Animal(String idRanch, String name, String type, String gender, String age, String stage, String weight, String breed) {
         this.idRanch = idRanch;
         this.name = name;
         this.type = type;
@@ -39,7 +39,7 @@ public class Animal implements Serializable {
         this.age = age;
         this.stage = stage;
         this.weight = weight;
-        this.race = race;
+        this.breed = breed;
     }
 
     public Animal(String id, AnimalDto animalDto) {
@@ -51,7 +51,7 @@ public class Animal implements Serializable {
         this.age = animalDto.getAge();
         this.stage = animalDto.getStage();
         this.weight = animalDto.getWeight();
-        this.race = animalDto.getBreed();
+        this.breed = animalDto.getBreed();
     }
 
     public Animal() {
@@ -122,11 +122,11 @@ public class Animal implements Serializable {
         this.weight = weight;
     }
 
-    public String getRace() {
-        return race;
+    public String getBreed() {
+        return breed;
     }
 
-    public void setRace(String race) {
-        this.race = race;
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 }
