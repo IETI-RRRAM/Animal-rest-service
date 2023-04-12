@@ -51,7 +51,11 @@ public class AnimalRepositoryImpl implements AnimalRepository{
                 .set("idRanch", animal.getIdRanch())
                 .set("name", animal.getName())
                 .set("type", animal.getType())
-                .set("gender", animal.getGender());
+                .set("gender", animal.getGender())
+                .set("breed", animal.getBreed())
+                .set("age", animal.getAge())
+                .set("weight", animal.getWeight())
+                .set("stage", animal.getStage());
         mongoTemplate.updateFirst(query, update, Animal.class);
         return findById(id).orElse(null);
     }

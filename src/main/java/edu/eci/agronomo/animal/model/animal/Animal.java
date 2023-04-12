@@ -1,6 +1,5 @@
 package edu.eci.agronomo.animal.model.animal;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -52,7 +51,7 @@ public class Animal implements Serializable {
         this.age = animalDto.getAge();
         this.stage = animalDto.getStage();
         this.weight = animalDto.getWeight();
-        this.race = animalDto.getRace();
+        this.race = animalDto.getBreed();
     }
 
     public Animal() {

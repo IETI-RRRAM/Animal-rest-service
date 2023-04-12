@@ -8,9 +8,9 @@ public class AnimalDto {
     private String age;
     private String stage;
     private String weight;
-    private String race;
+    private String breed;
 
-    public AnimalDto(String idRanch, String name, String type, String gender, String age, String stage, String weight, String race) {
+    public AnimalDto(String idRanch, String name, String type, String gender, String age, String stage, String weight, String breed) {
         this.idRanch = idRanch;
         this.name = name;
         this.type = type;
@@ -18,7 +18,7 @@ public class AnimalDto {
         this.age = age;
         this.stage = stage;
         this.weight = weight;
-        this.race = race;
+        this.breed = breed;
     }
 
     public AnimalDto() {
@@ -81,11 +81,11 @@ public class AnimalDto {
         this.weight = weight;
     }
 
-    public String getRace() {
-        return race;
+    public String getBreed() {
+        return breed;
     }
 
-    public void setRace(String race) {
-        this.race = race;
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 }
