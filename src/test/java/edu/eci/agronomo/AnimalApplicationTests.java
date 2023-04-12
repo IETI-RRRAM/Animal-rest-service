@@ -47,7 +47,7 @@ class AnimalApplicationTests {
 	//TEST GET 1
 	@Test
 	public void testFindByIdExistingAnimal() throws Exception {
-		Animal animal = new Animal("117", "caramelo", "cow", "M");
+		Animal animal = new Animal("117", "caramelo", "cow", "M", "bebe", "50", "bovino", "3");
 		when(animalService.findById("1")).thenReturn(Optional.of(animal));
 
 		mockMvc.perform(get(BASE_URL + "/1"))
@@ -75,8 +75,8 @@ class AnimalApplicationTests {
 	@Test
 	void testGetAll() throws Exception {
 		ArrayList<Animal> animals = new ArrayList<>();
-		Animal animal = new Animal("117", "caramelo", "cow", "M");
-		Animal animal2 = new Animal("JHGKAIG","117", "caramelo", "cow", "M");
+		Animal animal = new Animal("117", "caramelo", "cow", "M", "bebe", "50", "bovino", "3");
+		Animal animal2 = new Animal("JHGKAIG","117", "caramelo", "cow", "M", "bebe", "50", "bovino", "3");
 		animals.add(animal);
 		animals.add(animal2);
 
@@ -93,7 +93,7 @@ class AnimalApplicationTests {
 	//TEST UPDATE 1
 	@Test
 	public void testUpdateExistingAnimal() throws Exception {
-		AnimalDto animalDto = new AnimalDto("1", "caramelo", "cow", "M");
+		AnimalDto animalDto = new AnimalDto("1", "caramelo", "cow", "M", "bebe", "50", "bovino", "3");
 		Animal animal = new Animal("1", animalDto);
 
 		when(animalService.findById("1")).thenReturn(Optional.of(animal));
@@ -124,7 +124,7 @@ class AnimalApplicationTests {
 	//TEST SAVE 1
 	@Test
 	public void testSaveNewAnimal() throws Exception {
-		Animal animal = new Animal("117", "caramelo", "cow", "M");
+		Animal animal = new Animal("117", "caramelo", "cow", "M", "bebe", "50", "bovino", "3");
 
 		when(animalService.save(any())).thenReturn(animal);
 
@@ -141,7 +141,7 @@ class AnimalApplicationTests {
 	//TEST DELETE
 	@Test
 	void testDeleteAnimal() throws Exception {
-		Animal animal = new Animal("JHGKAIG","117", "caramelo", "cow", "M");
+		Animal animal = new Animal("JHGKAIG","117", "caramelo", "cow", "M", "bebe", "50", "bovino", "3");
 
 		when(animalService.findById(any())).thenReturn(Optional.of(animal));
 

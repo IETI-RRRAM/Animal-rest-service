@@ -15,20 +15,32 @@ public class Animal implements Serializable {
     private String name;
     private String type;
     private String gender;
+    private String stage;
+    private String weight;
+    private String breed;
+    private String age;
 
-    public Animal(String id, String idRanch, String name, String type, String gender) {
+    public Animal(String id, String idRanch, String name, String type, String gender, String stage, String weight, String breed, String age) {
         this.id = id;
         this.idRanch = idRanch;
         this.name = name;
         this.type = type;
         this.gender = gender;
+        this.stage = stage;
+        this.weight = weight;
+        this.breed = breed;
+        this.age = age;
     }
 
-    public Animal(String idRanch, String name, String type, String gender) {
+    public Animal(String idRanch, String name, String type, String gender, String stage, String weight, String breed, String age) {
         this.idRanch = idRanch;
         this.name = name;
         this.type = type;
         this.gender = gender;
+        this.stage = stage;
+        this.weight = weight;
+        this.breed = breed;
+        this.age = age;
     }
 
     public Animal(String id, AnimalDto animalDto) {
@@ -37,6 +49,10 @@ public class Animal implements Serializable {
         this.name = animalDto.getName();
         this.type = animalDto.getType();
         this.gender = animalDto.getGender();
+        this.stage = animalDto.getStage();
+        this.weight = animalDto.getWeight();
+        this.breed = animalDto.getBreed();
+        this.age = animalDto.getAge();
     }
 
     public Animal() {
@@ -81,5 +97,37 @@ public class Animal implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 }

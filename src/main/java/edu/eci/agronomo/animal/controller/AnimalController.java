@@ -3,7 +3,6 @@ package edu.eci.agronomo.animal.controller;
 import edu.eci.agronomo.animal.exceptions.AnimalNotFoundException;
 import edu.eci.agronomo.animal.model.animal.Animal;
 import edu.eci.agronomo.animal.model.animal.AnimalDto;
-import edu.eci.agronomo.animal.service.AnimalService;
 import edu.eci.agronomo.animal.service.AnimalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
